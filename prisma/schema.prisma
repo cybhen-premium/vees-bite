@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  category    String   // local, mains, snacks, drinks, specials
+  imageUrl    String
+  available   Boolean  @default(true)
+  spicy       Boolean  @default(false)
+  popular     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  orderNumber     String   @unique
+  customerName    String
+  customerPhone   String
+  orderType       String   // DELIVERY or PICKUP
+  deliveryAddress String?
+  notes           String?
+  paymentMethod   String   // MOMO, CASH, WHATSAPP
+  paymentStatus   String   @default("PENDING") // PENDING, PAID
+  status          String   @default("PENDING") // PENDING, PREPARING, OUT_FOR_DELIVERY, COMPLETED, CANCELLED
+  subtotal        Float
+  deliveryFee     Float    @default(0)
+  totalAmount     Float
+  itemsJson       String   // JSON string of ordered items
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model EventBooking {
+  id              String   @id @default(cuid())
+  bookingNumber   String   @unique
+  fullName        String
+  phone           String
+  email           String?
+  eventType       String   // WEDDING, BIRTHDAY, CORPORATE, PARTY, FAMILY, OTHER
+  preferredDate   DateTime
+  alternateDate   DateTime?
+  startTime       String
+  endTime         String
+  guestCount      Int
+  cateringOption  String   // BUFFET, PLATED, FINGER_FOODS, EXTERNAL
+  spacePreference String   // MAIN_HALL, GARDEN_TERRACE, VIP_LOUNGE, FULL_VENUE
+  additionalNotes String?
+  status          String   @default("NEW") // NEW, CONTACTED, CONFIRMED, DECLINED
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CustomerEnquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    String   @default("NEW") // NEW, REPLIED, ARCHIVED
+  createdAt DateTime @default(now())
+}
