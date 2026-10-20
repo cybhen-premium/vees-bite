@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { 
@@ -63,8 +64,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-gold to-brand-600 flex items-center justify-center text-brand-dark shadow-glow group-hover:scale-105 transition-transform">
-            <UtensilsCrossed className="w-6 h-6 stroke-[2.5]" />
+          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-glow group-hover:scale-105 transition-transform bg-[#0a192f]">
+            <Image
+              src="/logo.png"
+              alt="Vee's Bite & Events Center Logo"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
           <div>
             <div className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-brand-gold transition-colors">

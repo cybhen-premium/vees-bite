@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
   UtensilsCrossed, 
   MapPin, 
@@ -62,8 +63,13 @@ export default function Footer() {
         {/* Brand Profile */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-brand-gold flex items-center justify-center text-brand-dark font-bold shadow-glow">
-              <UtensilsCrossed className="w-5 h-5 stroke-[2.5]" />
+            <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-glow bg-[#0a192f]">
+              <Image
+                src="/logo.png"
+                alt="Vee's Bite & Events Center Logo"
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
               <span className="font-serif text-xl font-bold text-white block">

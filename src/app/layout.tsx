@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     description: "Authentic Ghanaian culinary excellence and grand event celebrations in Tema, Ghana.",
     images: ["/images/hero.jpg"],
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

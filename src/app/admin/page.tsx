@@ -211,8 +211,13 @@ export default function AdminPage() {
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-brand-border">
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-2xl bg-brand-gold text-brand-dark shadow-glow">
-              <ShieldCheck className="w-7 h-7" />
+            <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-glow bg-[#0a192f]">
+              <Image
+                src="/logo.png"
+                alt="Vee's Bite Logo"
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
               <span className="text-xs font-bold text-brand-gold uppercase tracking-wider">
