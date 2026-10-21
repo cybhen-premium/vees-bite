@@ -8,7 +8,6 @@ import {
   MapPin, 
   Clock, 
   MessageCircle, 
-  ShieldCheck, 
   Send,
   Calendar,
   UtensilsCrossed
@@ -203,10 +202,6 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <Link href="/about" className="hover:text-white transition-colors">Our Story</Link>
             <Link href="/events" className="hover:text-white transition-colors">Bookings</Link>
-            <Link href="/admin" className="hover:text-[#F25C05] transition-colors flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Staff Login
-            </Link>
           </div>
         </div>
       </div>

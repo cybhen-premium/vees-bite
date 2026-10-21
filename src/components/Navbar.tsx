@@ -53,12 +53,6 @@ export default function Navbar() {
               <Phone className="w-3 h-3 text-[#F25C05]" />
               0264 449 211 / 0559 414 013
             </a>
-            <Link 
-              href="/admin" 
-              className="text-emerald-300 hover:text-white transition-colors"
-            >
-              Staff Portal
-            </Link>
           </div>
         </div>
       </div>
