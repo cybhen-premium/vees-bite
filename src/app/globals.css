@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#0C271F] text-gray-100 antialiased font-sans selection:bg-[#F25C05] selection:text-white;
+  }
+}
+
 @layer components {
   .gold-btn {
     @apply bg-brand-gold text-brand-dark font-semibold hover:brightness-110 active:scale-[0.98] transition-all duration-200 cursor-pointer;
   }
-}
 
+  .orange-btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[#F25C05] hover:bg-[#D94E00] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm active:scale-[0.98] cursor-pointer;
+  }
+}

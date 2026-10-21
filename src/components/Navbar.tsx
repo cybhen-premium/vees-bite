@@ -11,9 +11,8 @@ import {
   X, 
   Phone, 
   Calendar, 
-  UtensilsCrossed, 
-  ShieldCheck,
-  MapPin
+  MapPin,
+  Clock
 } from "lucide-react";
 
 export default function Navbar() {
@@ -32,39 +31,43 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-brand-border/60 bg-brand-dark/85 backdrop-blur-md transition-all">
-      {/* Top Banner Notice */}
-      <div className="hidden md:flex items-center justify-between px-6 py-1.5 text-xs bg-brand-darker border-b border-brand-border/30 text-gray-400">
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1.5 text-brand-gold">
-            <MapPin className="w-3.5 h-3.5 text-brand-gold" />
-            Afienya Mataheko, Hallelujah, Tema
-          </span>
-          <span className="text-gray-400">Open Daily: 10:35 AM – 10:00 PM</span>
-        </div>
-        <div className="flex items-center gap-5">
-          <a 
-            href="tel:+233264449211" 
-            className="flex items-center gap-1 text-gray-300 hover:text-brand-gold transition-colors"
-          >
-            <Phone className="w-3 h-3 text-brand-gold" />
-            Call: 0264 449 211
-          </a>
-          <Link 
-            href="/admin" 
-            className="flex items-center gap-1 text-gray-400 hover:text-brand-gold transition-colors"
-          >
-            <ShieldCheck className="w-3 h-3" />
-            Admin Portal
-          </Link>
+    <header className="sticky top-0 z-50 w-full bg-[#0C271F] border-b border-[#143B30] text-white">
+      {/* Top Info Bar */}
+      <div className="hidden lg:block bg-[#081B15] border-b border-[#0E2F25] text-[11px] py-1.5 text-emerald-100/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 text-emerald-200">
+              <MapPin className="w-3.5 h-3.5 text-[#F25C05]" />
+              Afienya Mataheko, Hallelujah, Tema
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-emerald-400" />
+              Open Daily: 10:35 AM – 10:00 PM
+            </span>
+          </div>
+          <div className="flex items-center gap-5">
+            <a 
+              href="tel:+233264449211" 
+              className="flex items-center gap-1.5 text-emerald-100 hover:text-[#F25C05] transition-colors"
+            >
+              <Phone className="w-3 h-3 text-[#F25C05]" />
+              0264 449 211 / 0559 414 013
+            </a>
+            <Link 
+              href="/admin" 
+              className="text-emerald-300 hover:text-white transition-colors"
+            >
+              Staff Portal
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Main Header Bar */}
+      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo */}
+        {/* Brand Logo & Name */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-glow group-hover:scale-105 transition-transform bg-[#0a192f]">
+          <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0 shadow-md border-2 border-emerald-400/20 group-hover:border-[#F25C05] transition-all bg-[#0a192f]">
             <Image
               src="/logo.png"
               alt="Vee's Bite & Events Center Logo"
@@ -73,110 +76,112 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div>
-            <div className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-brand-gold transition-colors">
+          <div className="flex flex-col">
+            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-emerald-200 transition-colors">
               Vee’s Bite
-            </div>
-            <div className="text-[10px] tracking-widest uppercase font-semibold text-brand-gold/90">
-              & Events Center • Tema
-            </div>
+            </span>
+            <span className="text-[10px] tracking-wider uppercase font-semibold text-[#F25C05]">
+              &amp; Events Center • Tema
+            </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-3">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all relative ${
                   isActive
-                    ? "text-brand-gold bg-white/5 border border-brand-gold/20 font-semibold"
-                    : "text-gray-300 hover:text-white hover:bg-white/5"
+                    ? "text-[#F25C05] font-bold"
+                    : "text-gray-200 hover:text-white hover:text-[#F25C05]"
                 }`}
               >
                 {link.name}
+                {isActive && (
+                  <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#F25C05] rounded-full" />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Action Buttons: Booking, Cart, Mobile Toggle */}
+        {/* Action Buttons: Cart + Orange CTA Button (matching reference) */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/events"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 text-xs font-semibold uppercase tracking-wider transition-all"
-          >
-            <Calendar className="w-4 h-4" />
-            Book Venue
-          </Link>
-
-          {/* Cart Trigger */}
+          {/* Shopping Cart Button */}
           <button
             onClick={toggleCart}
             id="cart-toggle-btn"
-            aria-label="Open Shopping Cart"
-            className="relative p-2.5 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-gold text-white hover:text-brand-gold transition-all"
+            aria-label="View Shopping Cart"
+            className="relative p-2.5 rounded-lg bg-[#143B30] hover:bg-[#1C4E40] text-white transition-all cursor-pointer"
           >
             <ShoppingBag className="w-5 h-5" />
             {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-brand-gold text-brand-dark text-xs font-bold flex items-center justify-center shadow-glow animate-pulse">
+              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#F25C05] text-white text-[10px] font-bold flex items-center justify-center shadow-md">
                 {totalItems}
               </span>
             )}
           </button>
 
+          {/* Prominent Orange CTA Button (matching reference) */}
+          <Link
+            href="/order"
+            className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-md bg-[#F25C05] hover:bg-[#D94E00] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all active:scale-[0.98]"
+          >
+            Order Online
+          </Link>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            id="mobile-menu-btn"
-            aria-label="Toggle navigation menu"
-            className="lg:hidden p-2.5 rounded-xl bg-brand-surface border border-brand-border text-gray-300 hover:text-white"
+            aria-label="Toggle navigation"
+            className="lg:hidden p-2.5 rounded-lg bg-[#143B30] text-white hover:bg-[#1C4E40] transition-colors"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Slide-down Menu */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-brand-border bg-brand-dark/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-base font-medium ${
-                  isActive
-                    ? "text-brand-gold bg-brand-gold/10 font-semibold"
-                    : "text-gray-300 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-          
-          <div className="pt-4 border-t border-brand-border/60 flex flex-col gap-2.5">
+        <div className="lg:hidden bg-[#0A221B] border-t border-[#143B30] px-4 py-6 space-y-4 shadow-xl">
+          <div className="space-y-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block px-3 py-2.5 rounded-md text-sm font-semibold uppercase tracking-wider transition-colors ${
+                    isActive
+                      ? "bg-[#F25C05] text-white"
+                      : "text-gray-200 hover:bg-[#143B30] hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="pt-4 border-t border-[#143B30] flex flex-col gap-2.5">
+            <Link
+              href="/order"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3 rounded-md bg-[#F25C05] text-white text-xs font-bold uppercase tracking-wider text-center shadow-md"
+            >
+              Order Online
+            </Link>
             <Link
               href="/events"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg border border-brand-gold text-brand-gold font-medium text-sm"
+              className="w-full py-3 rounded-md bg-[#143B30] text-emerald-200 text-xs font-semibold uppercase tracking-wider text-center border border-emerald-400/20"
             >
-              <Calendar className="w-4 h-4" />
-              Book Venue / Events
-            </Link>
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-2 text-xs text-gray-400 hover:text-brand-gold"
-            >
-              <ShieldCheck className="w-4 h-4" />
-              Manager Admin Portal
+              Book Event Venue
             </Link>
           </div>
         </div>

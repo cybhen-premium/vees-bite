@@ -30,6 +30,18 @@ const config: Config = {
           surfaceLight: "#222733",
           border: "#2E3444",
         },
+        pine: {
+          DEFAULT: "#0C271F",
+          light: "#13372C",
+          dark: "#081E17",
+          darker: "#05130E",
+          surface: "#0E2B22",
+        },
+        accent: {
+          orange: "#F25C05",
+          "orange-hover": "#D94E00",
+          "orange-light": "#FF7527",
+        },
       },
       fontFamily: {
         sans: ["var(--font-outfit)", "system-ui", "sans-serif"],

@@ -1,212 +1,212 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  UtensilsCrossed, 
-  MapPin, 
   Phone, 
+  MapPin, 
   Clock, 
   MessageCircle, 
   ShieldCheck, 
+  Send,
   Calendar,
-  Sparkles
+  UtensilsCrossed
 } from "lucide-react";
 
 export default function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setSubscribed(true);
+    setTimeout(() => {
+      setNewsletterEmail("");
+      setSubscribed(false);
+    }, 4000);
+  };
+
   return (
-    <footer className="border-t border-brand-border/60 bg-brand-darker text-gray-300">
-      {/* Top Banner / Callout */}
-      <div className="bg-gradient-to-r from-brand-surface to-brand-dark border-b border-brand-border/40 py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              Tema's Top Rated Dining & Celebrations
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-              Planning a Gathering or Craving Gourmet Ghanaian Food?
-            </h3>
-            <p className="text-sm text-gray-400 mt-1 max-w-xl">
-              Enjoy freshly prepared authentic meals or reserve our banquet hall and garden terrace for your special milestone.
+    <footer className="bg-[#081E17] border-t border-[#0F362A] text-emerald-100/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-[#123E30]">
+          {/* Brand Info (4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-md border-2 border-emerald-400/20 bg-[#0a192f]">
+                <Image
+                  src="/logo.png"
+                  alt="Vee's Bite & Events Center Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold tracking-tight text-white">
+                  Vee’s Bite
+                </span>
+                <span className="text-[10px] tracking-wider uppercase font-semibold text-[#F25C05]">
+                  &amp; Events Center • Tema
+                </span>
+              </div>
+            </Link>
+
+            <p className="text-sm text-emerald-100/70 leading-relaxed font-light">
+              Tema’s premier destination for authentic Ghanaian cuisine, charcoal grills, whole tilapia, and unforgettable private events at Afienya Mataheko, Hallelujah.
             </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/menu"
-              className="px-5 py-3 rounded-xl gold-btn text-sm font-semibold flex items-center gap-2"
-            >
-              <UtensilsCrossed className="w-4 h-4" />
-              Order Food Now
-            </Link>
-            <Link
-              href="/events"
-              className="px-5 py-3 rounded-xl bg-white/5 border border-brand-gold/40 hover:bg-brand-gold/10 text-brand-gold text-sm font-semibold flex items-center gap-2 transition-all"
-            >
-              <Calendar className="w-4 h-4" />
-              Book Venue
-            </Link>
-            <a
-              href="https://wa.me/233264449211?text=Hello%20Vee's%20Bite,%20I%20would%20like%20to%20make%20an%20enquiry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold flex items-center gap-2 transition-all shadow-lg shadow-emerald-950/40"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
 
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand Profile */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-glow bg-[#0a192f]">
-              <Image
-                src="/logo.png"
-                alt="Vee's Bite & Events Center Logo"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <span className="font-serif text-xl font-bold text-white block">
-                Vee’s Bite
-              </span>
-              <span className="text-[10px] tracking-wider uppercase text-brand-gold font-semibold">
-                & Events Center • Tema
-              </span>
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://facebook.com/veesbiteandeventcenter"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-full bg-[#0E3125] border border-[#164938] flex items-center justify-center text-emerald-200 hover:text-white hover:bg-[#F25C05] hover:border-[#F25C05] transition-all"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a
+                href="https://instagram.com/vees.bite"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full bg-[#0E3125] border border-[#164938] flex items-center justify-center text-emerald-200 hover:text-white hover:bg-[#F25C05] hover:border-[#F25C05] transition-all"
+              >
+                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+              <a
+                href="https://twitter.com/veesbiteandeventcenter"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter / X"
+                className="w-9 h-9 rounded-full bg-[#0E3125] border border-[#164938] flex items-center justify-center text-emerald-200 hover:text-white hover:bg-[#F25C05] hover:border-[#F25C05] transition-all"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="https://wa.me/233264449211?text=Hello%20Vee's%20Bite"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-9 h-9 rounded-full bg-[#0E3125] border border-[#164938] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-600 transition-all"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
             </div>
           </div>
-          <p className="text-sm text-gray-400 leading-relaxed">
-            A welcoming destination for delicious local and continental dining, coupled with elegant indoor and outdoor event facilities in the heart of Tema, Ghana.
-          </p>
-          <div className="flex items-center gap-3 pt-2 text-gray-400">
-            <span className="text-xs text-brand-gold font-semibold">Verified Rating:</span>
-            <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
-              ★ 4.4 / 5.0 (7 Google Reviews)
-            </span>
+
+          {/* Quick Links (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">
+              Explore
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              </li>
+              <li>
+                <Link href="/menu" className="hover:text-white transition-colors">Restaurant Menu</Link>
+              </li>
+              <li>
+                <Link href="/order" className="hover:text-white transition-colors">Order Online</Link>
+              </li>
+              <li>
+                <Link href="/events" className="hover:text-white transition-colors">Event Spaces</Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="hover:text-white transition-colors">Photo Gallery</Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        {/* Quick Navigation */}
-        <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-l-2 border-brand-gold pl-2">
-            Explore
-          </h4>
-          <ul className="space-y-2.5 text-sm">
-            <li>
-              <Link href="/menu" className="hover:text-brand-gold transition-colors">
-                Restaurant Menu & Specials
-              </Link>
-            </li>
-            <li>
-              <Link href="/order" className="hover:text-brand-gold transition-colors">
-                Online Ordering & MoMo
-              </Link>
-            </li>
-            <li>
-              <Link href="/events" className="hover:text-brand-gold transition-colors">
-                Event Center & Banquet Booking
-              </Link>
-            </li>
-            <li>
-              <Link href="/gallery" className="hover:text-brand-gold transition-colors">
-                Photo Gallery & Virtual Tour
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-brand-gold transition-colors">
-                About Our Story & Standards
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-brand-gold transition-colors">
-                Contact & Directions
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Business Hours & Location */}
-        <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-l-2 border-brand-gold pl-2">
-            Visit & Hours
-          </h4>
-          <div className="space-y-3 text-sm">
-            <div className="flex items-start gap-2.5 text-gray-300">
-              <MapPin className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
-              <span>
-                <strong>Afienya Mataheko, Hallelujah</strong>, Tema, Greater Accra, Ghana
-              </span>
-            </div>
-            <div className="flex items-start gap-2.5 text-gray-300">
-              <Clock className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
-              <div>
-                <span className="font-medium text-white block">Opening Hours:</span>
-                <span className="text-gray-400">Daily: ~10:35 AM – 10:00 PM</span>
+          {/* Location & Contact (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-4">
+              Hours &amp; Location
+            </h4>
+            <div className="space-y-3 text-xs">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#F25C05] shrink-0 mt-0.5" />
+                <span>Afienya Mataheko, Hallelujah, Tema, Ghana</span>
               </div>
-            </div>
-            <div className="flex items-start gap-2.5 text-gray-300">
-              <Phone className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
-              <div>
-                <a href="tel:+233264449211" className="text-brand-gold font-medium hover:underline block">
-                  0264 449 211
-                </a>
-                <a href="tel:+233559414013" className="text-brand-gold font-medium hover:underline block mt-0.5">
-                  0559 414 013
-                </a>
-                <span className="text-xs text-gray-400 block mt-0.5">Orders &amp; Venue Consultations</span>
+              <div className="flex items-start gap-2.5">
+                <Clock className="w-4 h-4 text-[#F25C05] shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-white font-medium">Monday – Sunday</div>
+                  <div className="text-emerald-300">10:35 AM – 10:00 PM Daily</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#F25C05] shrink-0 mt-0.5" />
+                <div>
+                  <a href="tel:+233264449211" className="hover:text-white block">0264 449 211</a>
+                  <a href="tel:+233559414013" className="hover:text-white block">0559 414 013</a>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Newsletter / Updates (3 cols) - matching reference design */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs uppercase tracking-widest font-bold text-white">
+              Stay Connected
+            </h4>
+            <p className="text-xs text-emerald-100/70 font-light leading-relaxed">
+              Receive updates on weekend chef specials, live band nights, and holiday celebrations.
+            </p>
+
+            <form onSubmit={handleSubscribe} className="space-y-2">
+              <div className="flex items-center rounded-md bg-[#0C271F] border border-[#164938] overflow-hidden p-1">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Your email address"
+                  className="bg-transparent px-3 py-2 text-xs text-white placeholder-emerald-200/40 focus:outline-none w-full"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded bg-[#F25C05] hover:bg-[#D94E00] text-white text-xs font-bold transition-all shrink-0 cursor-pointer"
+                >
+                  Join
+                </button>
+              </div>
+              {subscribed && (
+                <p className="text-[11px] text-emerald-400 font-medium">
+                  ✓ Thank you for subscribing to Vee’s Bite!
+                </p>
+              )}
+            </form>
+          </div>
         </div>
 
-        {/* Payment Methods & Manager Portal */}
-        <div>
-          <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-l-2 border-brand-gold pl-2">
-            Payments & Administration
-          </h4>
-          <p className="text-xs text-gray-400 mb-3">
-            We accept all major Ghana payment channels for dining and event deposits:
-          </p>
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="px-2.5 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 font-medium text-center">
-              MTN MoMo
-            </div>
-            <div className="px-2.5 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 font-medium text-center">
-              Telecel Cash
-            </div>
-            <div className="px-2.5 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 font-medium text-center">
-              AT Money
-            </div>
-            <div className="px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-medium text-center">
-              Cash on Delivery
-            </div>
-          </div>
-
-          <div className="mt-5 pt-4 border-t border-brand-border/40">
-            <Link
-              href="/admin"
-              className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-brand-gold transition-colors"
-            >
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100/60">
+          <p>© {new Date().getFullYear()} Vee’s Bite &amp; Events Center. All rights reserved. Tema, Ghana.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/about" className="hover:text-white transition-colors">Our Story</Link>
+            <Link href="/events" className="hover:text-white transition-colors">Bookings</Link>
+            <Link href="/admin" className="hover:text-[#F25C05] transition-colors flex items-center gap-1">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Owner & Staff Admin Dashboard
+              Staff Login
             </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Copyright + Social */}
-      <div className="border-t border-brand-border/40 py-6 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Vee&apos;s Bite &amp; Events Center. All rights reserved. Afienya Mataheko, Hallelujah, Tema.</p>
-          <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com/veesbiteevents" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Facebook: vee&apos;s bite &amp; event center</a>
-            <span className="text-gray-700">|</span>
-            <a href="https://www.instagram.com/vees.bite" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Instagram: @vees.bite</a>
           </div>
         </div>
       </div>
